@@ -4,8 +4,8 @@ export function projectCard(project) {
   const { title, description, icon, tags, repo, demo } = project;
   const chips = tags.map((t) => `<span class="chip">${t}</span>`).join("");
   const links = [
-    repo ? `<a href="${repo}">Código ↗</a>` : "",
-    demo ? `<a href="${demo}">Demo ↗</a>` : "",
+    repo ? `<a href="${repo}" target="_blank" rel="noopener noreferrer">Código ↗</a>` : "",
+    demo ? `<a href="${demo}" target="_blank" rel="noopener noreferrer">Demo ↗</a>` : "",
   ].join("");
   return `
     <article class="card">

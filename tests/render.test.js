@@ -24,6 +24,19 @@ test("projectCard mostra link de demo quando presente", () => {
   assert.match(html, /href="https:\/\/demo"/);
 });
 
+test("projectCard abre links externos em nova aba com rel seguro", () => {
+  const html = projectCard({
+    title: "X", description: "Y", icon: "🔌",
+    tags: ["A"], repo: "https://r", demo: "https://demo",
+  });
+  const links = html.match(/<a [^>]*>/g) || [];
+  assert.equal(links.length, 2);
+  for (const link of links) {
+    assert.match(link, /target="_blank"/);
+    assert.match(link, /rel="noopener noreferrer"/);
+  }
+});
+
 test("experienceItem usa a cor de accent na bolinha", () => {
   const html = experienceItem({
     icon: "💼", period: "2025", role: "Eng", org: "Org", description: "D", accent: "coral",
