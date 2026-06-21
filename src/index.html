@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
   <script>
     // Set theme before first paint to avoid a flash of the wrong theme.
+    // Default is light; the user's saved choice (if any) wins.
     (function () {
-      var saved = localStorage.getItem("theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");
     })();
   </script>
   <title>Ariana Carvalho · Engenheira de Software</title>

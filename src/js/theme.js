@@ -1,5 +1,6 @@
-// Theme handling: persist choice in localStorage, default to OS preference.
+// Theme handling: persist choice in localStorage, default to light.
 const STORAGE_KEY = "theme";
+const DEFAULT_THEME = "light";
 
 export function nextTheme(current) {
   return current === "dark" ? "light" : "dark";
@@ -12,9 +13,7 @@ export function applyTheme(theme) {
 }
 
 export function initTheme() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  applyTheme(saved || (prefersDark ? "dark" : "light"));
+  applyTheme(localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME);
 }
 
 export function toggleTheme() {
